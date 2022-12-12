@@ -1,6 +1,7 @@
-plugins {
-    id 'com.android.application'
-}
+apply plugin: 'com.android.application'
+// plugins {
+//     id 'com.android.application'
+// }
 
 android {
     namespace 'com.deepwaterooo.tetris3d'
@@ -35,7 +36,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation files('libs\\unity-classes.jar')
+    compileOnly files('libs\\unity-classes.jar')
     // compileOnly files('..\\dwsdk\\libs\\classes.jar')
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'

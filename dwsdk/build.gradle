@@ -1,9 +1,10 @@
-plugins {
-    id 'com.android.library' // <<<<<<<<<<<<<<<<<<<< 可以直接把app 改成早类库就可以了,不同再导一个
-}
+apply plugin: 'com.android.library'
+// plugins {
+//     id 'com.android.library' // <<<<<<<<<<<<<<<<<<<< 可以直接把app 改成早类库就可以了,不同再导一个
+// }
 
 android {
-    namespace 'com.deepwaterooo.dwsdk' // <<<<<<<<<<<<<<<<<<<< 这个需要
+    namespace 'com.deepwaterooo.dwsdk' // <<<<<<<<<<<<<<<<<<<< 这个需要,  与小SDK是一模一样同一个包裹下的吗 ?
     compileSdk 32
 
     defaultConfig {
@@ -27,26 +28,8 @@ android {
     }
 }
 
-dependencies {
-    compileOnly files('libs\\classes.jar') // <<<<<<<<<<<<<<<<<<<< Unity里的这些类是分Mono il2cpp的,要区分
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.7.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    // for api version 25
-    // implementation 'com.android.support:appcompat-v7:25.0.0'
-    // implementation 'com.squareup.retrofit2:retrofit:2.2.0'
-    // implementation 'com.google.code.gson:gson:2.6.2'
-    // implementation 'com.squareup.retrofit2:converter-gson:2.0.2'
-    // implementation 'com.squareup.okhttp3:logging-interceptor:3.3.1'
-
-    
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
-}
-
-// 狠奇怪:它为什么会时灵时不灵的,我感觉自己什么也没有动,它今天就可以打包打成功了
+// 狠奇怪:它为什么会时灵时不灵的,我感觉自己什么也没有动,它今天就可以打包打成功了 .gradle的版本号吗 ?
 def jarName = 'deepwaterooo_activity.jar'
 task deleteOldJar(type: Delete){
     delete 'build/outputs/' + jarName
@@ -57,4 +40,17 @@ task exportJar(type: Copy){
     include('classes.jar')
     rename('classes.jar', jarName)
 }
-exportJar.dependsOn(deleteOldJar, build) 
+exportJar.dependsOn(deleteOldJar, build)
+
+dependencies {
+    compileOnly files('libs\\classes.jar') // <<<<<<<<<<<<<<<<<<<< Unity里的这些类是分Mono il2cpp的,要区分
+    compileOnly files('libs\\dwsdk-debug.aar')
+
+    // 这个包裹,最好是不要任何的依赖,只打个.jar: 可是好像还是需要这些的
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    // testImplementation 'junit:junit:4.13.2'
+    // androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    // androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+}

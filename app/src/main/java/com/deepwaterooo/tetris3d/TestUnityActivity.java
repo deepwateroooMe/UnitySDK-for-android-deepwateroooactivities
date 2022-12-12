@@ -31,14 +31,6 @@ public class TestUnityActivity extends Activity {
         finish();
     }
 
-    // @Override // 暂时不需要这个方法来给自己添乱
-    // public boolean onKeyDown(int i, KeyEvent keyEvent) {
-    //     // 添加返回键返回 MainActivity
-    //     if(i == KeyEvent.KEYCODE_BACK){
-    //         callMainActivity();
-    //     }
-    //     return super.onKeyDown(i, keyEvent);
-    // }
     // @Override
     protected void onCreate(Bundle bundle) {
         this.requestWindowFeature(1);
@@ -58,15 +50,6 @@ public class TestUnityActivity extends Activity {
 
         this.mUnityPlayer.requestFocus(); // <<<<<<<<<< 我觉得这里是需要的
     }
-    // protected void onCreate(Bundle var1) { // UnityPlayerActivity 基类里的定义
-    //     this.requestWindowFeature(1);
-    //     super.onCreate(var1);
-    //     this.getWindow().setFormat(2);
-    //     // this.mUnityPlayer = new UnityPlayer(this); // <<<<<<<<<<<<<<<<<<<< 
-    //     this.mUnityPlayer = new MyUnityPlayer(this);  // <<<<<<<<<<<<<<<<<<<< 如假包换
-    //     this.setContentView(this.mUnityPlayer);
-    //     this.mUnityPlayer.requestFocus();
-    // }
 
     protected void onNewIntent(Intent var1) {
         this.setIntent(var1);
