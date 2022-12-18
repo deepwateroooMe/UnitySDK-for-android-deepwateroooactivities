@@ -35,7 +35,8 @@ public class DWSDK { // 暂只设一个按钮,但是SDK这端的浓缩,这个按
 
     public static void SendUnityMessage(String methodName, String parameter) {
         Log.d(TAG, "SendUnityMessage() ");
-        UnityPlayer.UnitySendMessage("MenuViewPanel", methodName, parameter != null ? parameter : ""); // for tmp
+// 这里的控件对象: 应该是Deepwaterooo        
+        UnityPlayer.UnitySendMessage("Deepwaterooo", methodName, parameter != null ? parameter : ""); // for tmp
     }
 
 // 暂时只增加这两三个公用接口,用于 调试 游戏端 与 安卓两个包裹的 封装 调用 流程    
@@ -64,7 +65,7 @@ public class DWSDK { // 暂只设一个按钮,但是SDK这端的浓缩,这个按
         Log.d(TAG, "add() ");
         String v = (x+y) + "";
         DWSDK.SendUnityMessage("onAddResultReady", v);
-        return  x+y;
+        return x+y;
     }
     
     // 获取接口内容

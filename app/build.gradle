@@ -5,18 +5,18 @@ apply plugin: 'com.android.application'
 
 android {
     namespace 'com.deepwaterooo.tetris3d'
-    compileSdk 32
+    compileSdk 25
 
     defaultConfig {
         applicationId "com.deepwaterooo.tetris3d"
         minSdk 25
-        targetSdk 31
+        targetSdk 25
         versionCode 1
         versionName "1.0"
         ndk {
             abiFilters 'armeabi-v7a'
         }
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        // testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -32,13 +32,18 @@ android {
 }
 
 dependencies {
+    implementation 'com.android.support:appcompat-v7:25.0.0'
 
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.7.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    // implementation 'com.android.support:appcompat-v7:28.0.0'
+    // implementation 'com.android.support:design:28.0.0'
+    // implementation 'com.android.support:support-v4:28.0.0' // [爱表哥,爱生活,一定要嫁给偶亲爱的表哥!!!]
+
+    // implementation 'androidx.appcompat:appcompat:1.5.1'
+    // implementation 'com.google.android.material:material:1.7.0'
+    // implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     compileOnly files('libs\\unity-classes.jar')
     // compileOnly files('..\\dwsdk\\libs\\classes.jar')
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+    // testImplementation 'junit:junit:4.13.2'
+    // androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    // androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 }

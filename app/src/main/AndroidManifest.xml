@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           package="com.deepwaterooo.tetris3d">
 
   <!-- android:roundIcon="@mipmap/ic_launcher_round" -->
   <!-- android:icon="@mipmap/ic_launcher" -->
+  <!-- tools:replace="android:appComponentFactory" -->
+  <!-- tools:replace="android:allowBackup" -->
+  <!-- tools:replace="android:appComponentFactory" -->
+  <!-- tools:replace="android:appComponentFactory" -->
+  <!-- android:appComponentFactory="android.support.v4.app.CoreComponentFactory" -->
   <application
       android:allowBackup="true"
       android:label="@string/app_name"
-      android:theme="@style/Theme.AppCompat"
       android:supportsRtl="true">
+<!--    android:theme="@style/Theme.AppCompat"-->
     <activity android:name=".MainActivity"
-              android:theme="@style/Theme.AppCompat"
               android:launchMode="singleTask"
               android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
               android:exported="true">
