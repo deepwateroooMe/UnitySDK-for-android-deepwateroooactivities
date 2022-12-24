@@ -5,13 +5,14 @@ apply plugin: 'com.android.application'
 
 android {
     namespace 'com.deepwaterooo.tetris3d'
-    compileSdk 25
+    compileSdk 26
+    buildToolsVersion '26.0.1'
 
     defaultConfig {
         applicationId "com.deepwaterooo.tetris3d"
-        minSdk 25
-        targetSdk 25
-        versionCode 1
+        minSdk 26
+        targetSdk 26
+        versionCode 1 
         versionName "1.0"
         ndk {
             abiFilters 'armeabi-v7a'
@@ -32,7 +33,7 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support:appcompat-v7:25.0.0'
+    implementation 'com.android.support:appcompat-v7:26.0.1'
 
     // implementation 'com.android.support:appcompat-v7:28.0.0'
     // implementation 'com.android.support:design:28.0.0'

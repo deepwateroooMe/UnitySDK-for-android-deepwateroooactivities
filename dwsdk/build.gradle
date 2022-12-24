@@ -5,11 +5,12 @@ apply plugin: 'com.android.library'
 
 android {
     namespace 'com.deepwaterooo.dwsdk' // <<<<<<<<<<<<<<<<<<<< 这个需要,  与小SDK是一模一样同一个包裹下的吗 ?
-    compileSdk 25
+    compileSdk 26
+    buildToolsVersion '26.0.1'
 
     defaultConfig {
-        minSdk 25
-        targetSdk 25
+        minSdk 26
+        targetSdk 26
         versionCode 1
         versionName "1.0"
 
@@ -46,12 +47,25 @@ dependencies {
     compileOnly files('libs\\classes.jar') // <<<<<<<<<<<<<<<<<<<< Unity里的这些类是分Mono il2cpp的,要区分
     compileOnly files('libs\\dwsdk-debug.aar')
 
-    implementation 'com.android.support:appcompat-v7:25.0.0'
+    implementation 'com.android.support:appcompat-v7:26.0.1' // 26.0.1
     // implementation 'com.android.support:appcompat-v7:28.0.0'
     // implementation 'com.android.support:design:28.0.0'
     // implementation 'com.android.support:support-v4:28.0.0' // [爱表哥,爱生活,一定要嫁给偶亲爱的表哥!!!]
     // implementation "com.google.android.material:material:1.1.0"
 
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    implementation 'com.google.code.gson:gson:2.6.2'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
+    implementation 'com.github.barteksc:android-pdf-viewer:2.2.0'
+    implementation 'io.github.inflationx:calligraphy3:3.1.1'
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
+    implementation 'com.soundcloud.android:android-crop:1.0.1@aar'
+
+    implementation 'com.android.support:multidex:1.0.3'
+    
     // // 这个包裹,最好是不要任何的依赖,只打个.jar: 可是好像还是需要这些的
     // implementation 'androidx.appcompat:appcompat:1.5.1'
     // implementation 'com.google.android.material:material:1.7.0'

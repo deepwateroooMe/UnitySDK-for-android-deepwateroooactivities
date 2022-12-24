@@ -35,20 +35,22 @@
       android:label="@string/app_name"
       android:icon="@mipmap/ic_launcher">
     <!-- 这里想要申请的一个安卓活动,就变成为是起误导作用了 -->
-    <!-- <activity -->
-    <!--     android:name="com.deepwaterooo.DWSDK" -->
-    <!--     android:exported="true"> -->
+    <activity
+        android:name="com.deepwaterooo.DWUnityActivity"
+        android:exported="true">
       <!-- <intent-filter> -->
       <!--   <action android:name="android.intent.action.MAIN" /> -->
       <!--   <category android:name="android.intent.category.LAUNCHER" /> -->
       <!-- </intent-filter> -->
-      <!-- <meta-data -->
-      <!--     android:name="unityplayer.UnityActivity" -->
-      <!--     android:value="true" /> -->
+      <meta-data
+          android:name="unityplayer.UnityActivity"
+          android:value="true" />
       <!-- <meta-data -->
       <!--     android:name="android.app.lib_name" -->
       <!--     android:value="" /> -->
-    <!-- </activity> -->
-    <activity android:name="com.deepwaterooo.DWUnityActivity"></activity>
+      <!-- 不知道上面这个是干什么的,先把它去掉 -->
+    </activity>
+    <!-- <activity android:name="com.deepwaterooo.DWUnityActivity"></activity> -->
+    <!-- <activity android:name="com.deepwaterooo.DWSDK"></activity> -->
   </application>
 </manifest>
