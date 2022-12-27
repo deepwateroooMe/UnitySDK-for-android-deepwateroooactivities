@@ -12,6 +12,6 @@
 //         mavenCentral()
 //     }
 // }
-rootProject.name = "tetris3d"
+rootProject.name = "tetrisactivity"
 include ':app'
 include ':dwsdk'

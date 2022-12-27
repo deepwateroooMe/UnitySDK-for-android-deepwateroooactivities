@@ -18,7 +18,8 @@ import okhttp3.ResponseBody;
 
 // Referenced classes of package com.deepwaterooo: DWUnityActivity
 public class DWSDK {
-    public static final String TAG = "DeepwateroooSDK"; // spu
+    public static final String TAG = "DWSDK"; // spu
+
     public static final String UnityGameobjectName = "Deepwaterooo";
     public static final int REQUEST_CODE_MANAGE_PLAYER = 0;
     public static final int REQUEST_CODE_SELECT_PLAYER = 1;
@@ -35,6 +36,7 @@ public class DWSDK {
     }
 
     public static void KeepAppAlive() {
+        Log.d(TAG, "KeepAppAlive() ");
         Util.keepAppAlive();
     }
     public static boolean IsInternetConnected() {
@@ -82,6 +84,7 @@ public class DWSDK {
         }
     }
     public static void Init() {
+        Log.d(TAG, "Init() PlayerUtil.startSplashScreenActivity");
         PlayerUtil.startSplashScreenActivity(DWUnityActivity.instance);
     }
     public static void StartSplashScreenActivity() {
@@ -90,6 +93,7 @@ public class DWSDK {
     public static void StartGameActivity() {}
 
     public static void ManagePlayers() { // 这里都是说在游戏端UnityPlayer活动的上下文(不是上下文,是当前活动)中打开SDK界面
+        Log.d(TAG, "ManagePlayers() ");
         PlayerUtil.startManagePlayerActivity(DWUnityActivity.instance, 0);
     }
     public static boolean IsLoggedIn() {
