@@ -1,4 +1,4 @@
-package com.deepwaterooo.dwsdk;
+package com.deepwaterooo;
 
 public interface UnityasrEventCallback {
 

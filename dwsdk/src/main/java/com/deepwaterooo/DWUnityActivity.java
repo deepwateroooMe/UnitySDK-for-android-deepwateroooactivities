@@ -12,6 +12,7 @@ import com.deepwaterooo.sdk.activities.BaseActivity;
 import com.deepwaterooo.sdk.activities.DWBaseActivity;
 import com.deepwaterooo.sdk.beans.PlayerDO;
 import com.deepwaterooo.sdk.utils.PlayerUtil;
+import com.deepwaterooo.sdk.utils.VoiceVolumnChangedIntereface;
 import com.unity3d.player.UnityPlayer;
 
 // Referenced classes of package com.deepwaterooo: DWSDK
@@ -34,10 +35,10 @@ public class DWUnityActivity extends DWBaseActivity { // 主要负责桥接:　�
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "onCreate() ");
         _isScreenLocked = false;
-        requestWindowFeature(1);
+        requestWindowFeature(1); // WINDOW_NO_TITLE
         super.onCreate(savedInstanceState);
         if (mUnityPlayer == null) {
-            getWindow().setFormat(2);
+            getWindow().setFormat(2); // 某种图像的显示格式 
             mUnityPlayer = new UnityPlayer(this);
             instance = this;
         } else {
@@ -58,7 +59,8 @@ public class DWUnityActivity extends DWBaseActivity { // 主要负责桥接:　�
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.d(TAG, "onActivityResult() requestCode: " + requestCode + ", resultCode" + resultCode);
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == 1005) // 这里有点儿没有搞清楚,这些调用的前后逻辑,数字定义在常量管理里
+// 游戏过程中,某些步骤是需要监护人来完成的,收到结果后,发送游戏端 Success fail cancel [1, 0, -1]        
+        if (resultCode == 1005) // 这里有点儿没有搞清楚,这些调用的前后逻辑,数字定义在常量管理里Constants.java
             DWSDK.SendUnityMessage("UnlockPermissionResponse", "1");
         else if (resultCode == 1007)
             DWSDK.SendUnityMessage("UnlockPermissionResponse", "0");
@@ -110,10 +112,16 @@ public class DWUnityActivity extends DWBaseActivity { // 主要负责桥接:　�
         else
             return super.dispatchKeyEvent(event);
     }
+// 要把下面两个方法的区别弄清楚:     
     protected void didNavigatesToMainMenu() {
         Log.d(TAG, "didNavigatesToMainMenu() ==> _onSDKScreenClose");
         DWSDK.SendUnityMessage("_onSDKScreenClose", "");
     }
+    public void didfinishSDKscreenflow() {
+        Log.d(TAG, "didfinishSDKscreenflow() ==> _onSDKReady");
+        DWSDK.SendUnityMessage("_onSDKReady", "");
+    }
+    
 // LoginListener: 2 个方法    
     public void didFinishSdkUserConfiguration() {
         Log.d(TAG, "didFinishSdkUserConfiguration() ==> OnZPadFinishSDKUserConfig");
@@ -124,10 +132,7 @@ public class DWUnityActivity extends DWBaseActivity { // 主要负责桥接:　�
         DWSDK.SendUnityMessage("_onProfileSelected", "");
         DWSDK.SendUnityMessage("_onSDKScreenClose", "");
     }
-    public void didfinishSDKscreenflow() {
-        Log.d(TAG, "didfinishSDKscreenflow() ==> _onSDKReady");
-        DWSDK.SendUnityMessage("_onSDKReady", "");
-    }
+
     public boolean onKeyUp(int keyCode, KeyEvent event) {
         return mUnityPlayer.injectEvent(event);
     }
@@ -137,11 +142,11 @@ public class DWUnityActivity extends DWBaseActivity { // 主要负责桥接:　�
     public boolean onTouchEvent(MotionEvent event) {
         return mUnityPlayer.injectEvent(event);
     }
+
     public boolean onGenericMotionEvent(MotionEvent event) {
         return mUnityPlayer.injectEvent(event);
     }
 }
-
 // // 尝试源项目的方法,把流程再测一遍
 // public class DWUnityActivity extends BaseActivity { 
 //     private final String TAG = "DWUnityActivity";
